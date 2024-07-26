@@ -1,20 +1,41 @@
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import React from 'react';
+import {
+  Image,
+  Modal,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import React, {useState} from 'react';
 import userProfileIcon from '../../assets/userProfileIcon.png';
 import phoneIcon from '../../assets/phoneIcon.png';
 import location from '../../assets/locationRed.png';
 import navigateCircleIcon from '../../assets/navigateCircle.png';
+import OngoingTripCodeModal from '../modals/ongoingTripCodeModal';
 
-const OngoingTripsCard = () => {
+const OngoingTripCard = () => {
+  const [modalVisible, setModalVisible] = useState(false);
+
   return (
     <View>
+      <Modal
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          setModalVisible(!modalVisible);
+        }}>
+        <OngoingTripCodeModal onClose={() => setModalVisible(false)} />
+      </Modal>
       <View style={styles.cards}>
         <View style={styles.userInfoRow}>
           <View style={styles.userInfo}>
             <Image source={userProfileIcon}></Image>
             <Text style={styles.userName}>Randhir Kumar</Text>
           </View>
-          <Image source={phoneIcon} style={styles.phoneIconStyle}></Image>
+          {/* <View style={styles.whiteCircle}></View> */}
+          <View style={styles.phoneIconContainer}>
+            <Image source={phoneIcon} style={styles.phoneIconStyle}></Image>
+          </View>
         </View>
         <View style={styles.timeNLocationRow}>
           <Text style={styles.tripTime}>08:30 AM</Text>
@@ -32,7 +53,9 @@ const OngoingTripsCard = () => {
         </View>
         <View style={styles.navigateNBtn}>
           <Image source={navigateCircleIcon}></Image>
-          <TouchableOpacity style={styles.signInBtn} onPress={() => onClick()}>
+          <TouchableOpacity
+            style={styles.signInBtn}
+            onPress={() => setModalVisible(true)}>
             <Text style={styles.signInText}>Sign In</Text>
           </TouchableOpacity>
         </View>
@@ -41,7 +64,7 @@ const OngoingTripsCard = () => {
   );
 };
 
-export default OngoingTripsCard;
+export default OngoingTripCard;
 
 const styles = StyleSheet.create({
   cards: {
@@ -70,13 +93,26 @@ const styles = StyleSheet.create({
     color: '#000',
     fontWeight: '400',
   },
-  phoneIconStyle: {
-    position: 'absolute',
-    top: -14,
-    right: -23,
+  // whiteCircle: {
+  //   height: 20,
+  //   width: 20,
+  //   backgroundColor: 'yellow',
+  //   borderRadius: 10,
+  //   position: 'absolute',
+  //   top: -12,
+  //   right: 30,
+  // },
+  phoneIconContainer: {
+    padding: 10,
     backgroundColor: '#F0F0F0',
-    borderWidth: 10,
-    borderRadius: 30,
+    borderRadius: 35,
+    position: 'absolute',
+    top: -19,
+    right: -27,
+  },
+  phoneIconStyle: {
+    height: 47,
+    width: 47,
   },
   row: {
     flexDirection: 'row',

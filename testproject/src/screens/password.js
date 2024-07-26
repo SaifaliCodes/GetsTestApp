@@ -19,7 +19,7 @@ const Password = ({navigation}) => {
         style={styles.input}
         onChangeText={setPassword}
         value={password}
-        placeholder="Enter Your Office ID"
+        placeholder="Enter Your Password"
         placeholderTextColor="#EF8C8C"
       />
       <View style={styles.viewText}>

@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import logo from '../assets/logo.png';
 
-const Login = ({navigation}) => {
+const Login = ({ navigation }) => {
   const [otp, setOtp] = React.useState('');
 
   return (
@@ -30,7 +30,7 @@ const Login = ({navigation}) => {
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.button}
-        onPress={() => navigation.navigate('upcomingTrips')}>
+        onPress={() => navigation.navigate('upcomingTrip')}>
         <Text style={styles.buttonText}>Log In</Text>
       </TouchableOpacity>
     </View>
