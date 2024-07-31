@@ -4,28 +4,30 @@ import TopBar from '../components/bars/topBar';
 import BottomBar from '../components/bars/bottomBar';
 import RequestedTripCard from '../components/cards/requestedTripCard';
 
-const RequestedTrip = ({navigation}) => {
-  const changeNavigation = (page: string) => {
+const RequestedTrip = ({ navigation }) => {
+  const changeNavigation = (page) => {
     navigation.navigate(page);
   };
 
   return (
     <View style={styles.mainContainer}>
       <TopBar />
-      <ScrollView style={styles.container}>
-        <View style={styles.cardView}>
-          <RequestedTripCard />
-        </View>
-        <View style={styles.cardView}>
-          <RequestedTripCard />
-        </View>
-        <View style={styles.cardView}>
-          <RequestedTripCard />
-        </View>
-        <View style={styles.cardView}>
-          <RequestedTripCard />
-        </View>
-      </ScrollView>
+      <View style={styles.container}>
+        <ScrollView style={{paddingHorizontal: 20, paddingTop: 25}}>
+          <View style={styles.cardView}>
+            <RequestedTripCard />
+          </View>
+          <View style={styles.cardView}>
+            <RequestedTripCard />
+          </View>
+          <View style={styles.cardView}>
+            <RequestedTripCard />
+          </View>
+          <View style={[styles.cardView, {marginBottom: 95}]}>
+            <RequestedTripCard />
+          </View>
+        </ScrollView>
+      </View>
       <View style={styles.bottomView}>
         <BottomBar page={'requestedTrip'} navigation={changeNavigation} />
       </View>
@@ -46,8 +48,8 @@ const styles = StyleSheet.create({
     flex: 1,
     // alignItems: 'center',
     backgroundColor: '#F0F0F0',
-    paddingVertical: 25,
-    width: '90%',
+    paddingBottom: 25,
+    width: '100%',
   },
   cardView: {
     width: '100%',

@@ -1,9 +1,12 @@
 import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import travelIcon from '../../assets/travelIcon.png';
-import roadIconGray from '../../assets/roadIconGray.png';
-import inboxIconGray from '../../assets/inboxIconGray.png';
-import userProfileIconGray from '../../assets/userProfileIconGray.png';
+// import roadIconGray from '../../assets/roadIconGray.png';
+// import inboxIconGray from '../../assets/inboxIconGray.png';
+// import userProfileIconGray from '../../assets/userProfileIconGray.png';
+import roadIcon from '../../assets/roadIcon.png';
+import inboxIcon from '../../assets/inboxIcon.png';
+import userProfileIcon from '../../assets/userProfileIconBl.png';
 
 const BottomBar = props => {
   const {page, navigation} = props;
@@ -54,7 +57,7 @@ const BottomBar = props => {
         </TouchableOpacity>
         <TouchableOpacity onPress={() => changeNavigation('ongoingTrip')}>
           <View style={[styles.iconContainer, {backgroundColor: road}]}>
-            <Image source={roadIconGray} style={styles.roadGray}></Image>
+            <Image source={roadIcon} style={styles.roadGray}></Image>
             {page === 'ongoingTrip' && (
               <Text style={styles.iconText}>ONGOING</Text>
             )}
@@ -62,7 +65,7 @@ const BottomBar = props => {
         </TouchableOpacity>
         <TouchableOpacity onPress={() => changeNavigation('requestedTrip')}>
           <View style={[styles.iconContainer, {backgroundColor: inbox}]}>
-            <Image source={inboxIconGray} style={styles.inboxGray}></Image>
+            <Image source={inboxIcon} style={styles.inboxGray}></Image>
             {page === 'requestedTrip' && (
               <Text style={styles.iconText}>REQUESTED</Text>
             )}
@@ -71,7 +74,7 @@ const BottomBar = props => {
         <TouchableOpacity onPress={() => changeNavigation('myProfile')}>
           <View style={[styles.iconContainer, {backgroundColor: profile, borderTopRightRadius: 21, borderBottomRightRadius: 21}]}>
             <Image
-              source={userProfileIconGray}
+              source={userProfileIcon}
               style={styles.userProfileGray}></Image>
               {page === 'myProfile' && (
               <Text style={styles.iconText}>PROFILE</Text>

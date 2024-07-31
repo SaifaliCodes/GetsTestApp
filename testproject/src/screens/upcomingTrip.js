@@ -29,7 +29,7 @@ const UpcomingTrip = ({ navigation }) => {
           <View style={styles.cardView}>
             <UpcomingTripCard />
           </View>
-          <View style={[styles.cardView, {marginBottom :95}]}>
+          <View style={[styles.cardView, {marginBottom: 95}]}>
             <UpcomingTripCard />
           </View>
         </ScrollView>

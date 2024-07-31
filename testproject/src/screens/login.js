@@ -23,7 +23,7 @@ const Login = ({navigation}) => {
         placeholder="Enter Your Driving License No."
         placeholderTextColor="#EF8C8C"
       />
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('upcomingTrip')}>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('password')}>
         <Text style={styles.buttonText}>Next</Text>
       </TouchableOpacity>
     </View>

@@ -1,5 +1,12 @@
-import {View, StyleSheet, Image, Text, ScrollView} from 'react-native';
-import React from 'react';
+import {
+  View,
+  StyleSheet,
+  Image,
+  Text,
+  ScrollView,
+  TouchableOpacity,
+} from 'react-native';
+import React, { useState } from 'react';
 import location from '../assets/location.png';
 import pushpin from '../assets/pushpin.png';
 import OngoingTripCard from '../components/cards/ongoingTripCard';
@@ -7,6 +14,15 @@ import TopBar from '../components/bars/topBar';
 import BottomBar from '../components/bars/bottomBar';
 
 const OngoingTrip = ({navigation}) => {
+
+  const [flag, setFlag] = useState(false);
+
+  const handleTripEnd = () => {
+    setFlag(true);
+    navigation.navigate('startShift', { flag: true });
+  };
+
+
   const changeNavigation = page => {
     navigation.navigate(page);
   };
@@ -41,8 +57,15 @@ const OngoingTrip = ({navigation}) => {
           <View style={styles.cardView}>
             <OngoingTripCard />
           </View>
-          <View style={styles.cardView}>
+          <View style={[styles.cardView]}>
             <OngoingTripCard />
+          </View>
+          <View style={{alignItems: 'center'}}>
+            <TouchableOpacity
+              style={styles.tripEndButton}
+              onPress={handleTripEnd}>
+              <Text style={styles.tripEndText}>Trip End</Text>
+            </TouchableOpacity>
           </View>
         </ScrollView>
       </View>
@@ -116,15 +139,28 @@ const styles = StyleSheet.create({
   },
   cardContainer: {
     flex: 1,
-    // alignItems: 'center',
     backgroundColor: '#F0F0F0',
-    paddingTop: 25,
     paddingBottom: 25,
     width: '100%',
   },
   cardView: {
     width: '100%',
     marginBottom: 20,
+  },
+  tripEndButton: {
+    width: 250,
+    height: 45,
+    backgroundColor: '#000',
+    borderRadius: 12,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 100,
+  },
+  tripEndText: {
+    color: '#FFF',
+    fontSize: 14,
+    fontFamily: 'poppins',
+    fontWeight: '500',
   },
   bottomView: {
     position: 'absolute',
